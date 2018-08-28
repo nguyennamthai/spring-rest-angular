@@ -33,6 +33,5 @@ nbdist/
 .DS_Store
 
 # Temporary
-application.properties
 src/main/resources/static
 /logs
