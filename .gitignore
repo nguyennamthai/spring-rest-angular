@@ -34,4 +34,5 @@ nbdist/
 
 # Temporary
 application.properties
+src/main/resources/static
 /logs

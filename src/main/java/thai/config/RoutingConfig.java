@@ -19,6 +19,6 @@ public class RoutingConfig {
 
     @Bean
     public RouterFunction<ServerResponse> monoRouterFunction() {
-        return RouterFunctions.route(GET("/"), request -> homeHandler.showHomePage());
+        return RouterFunctions.route(GET("/api"), request -> homeHandler.showHomePage());
     }
 }
