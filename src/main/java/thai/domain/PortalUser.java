@@ -23,7 +23,6 @@ public class PortalUser {
     @NonNull
     private Role role;
 
-    @NonNull
     private Profile profile;
 
     public enum Role {

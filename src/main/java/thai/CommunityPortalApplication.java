@@ -24,13 +24,13 @@ public class CommunityPortalApplication {
     CommandLineRunner runner(UserRepository userRepository, MessageRepository messageRepository) {
         return args -> {
             Profile profile = new Profile("My name is Thai", "/my-image");
-            PortalUser user = new PortalUser("user@thai.com", "123456", ADMIN, profile);
+            PortalUser user = new PortalUser("user@thai.com", "123456", ADMIN);
+            user.setProfile(profile);
             Optional<PortalUser> userOptional = userRepository.save(user).blockOptional();
 
             Message message = new Message("This is my first message");
             message.setUserId(userOptional.orElse(user).getId());
             messageRepository.save(message).block();
-            System.out.println(messageRepository.findAll().blockFirst());
         };
     }
 }
