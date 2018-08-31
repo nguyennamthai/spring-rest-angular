@@ -2,6 +2,7 @@ package thai.domain;
 
 import lombok.Data;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -9,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Data
+@Document(collection = "user")
 public class PortalUser {
     private String id;
 
@@ -23,14 +25,14 @@ public class PortalUser {
 
     private Profile profile;
 
-    private List<Message> messages;
+    private List<String> messageIds;
 
-    public PortalUser(String email, String password, Role role, Profile profile, Message... messages) {
+    public PortalUser(String email, String password, Role role, Profile profile, String... messageIds) {
         this.email = email;
         this.password = password;
         this.role = role;
         this.profile = profile;
-        this.messages = Arrays.asList(messages);
+        this.messageIds = Arrays.asList(messageIds);
     }
 
     public enum Role {

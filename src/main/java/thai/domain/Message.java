@@ -1,6 +1,5 @@
 package thai.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -11,12 +10,18 @@ import java.util.Date;
 import static org.springframework.data.mongodb.core.index.IndexDirection.DESCENDING;
 
 @Data
-@AllArgsConstructor
 public class Message {
+    private String id;
+
     @Size(min = 5, max = 255, message = "Enter between {min} and {max} characters")
     private String content;
 
     @Indexed(direction = DESCENDING)
     @LastModifiedDate
     private Date modified;
+
+    public Message(String content, Date modified) {
+        this.content = content;
+        this.modified = modified;
+    }
 }
