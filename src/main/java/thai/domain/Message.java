@@ -1,7 +1,9 @@
 package thai.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.index.Indexed;
 
@@ -9,6 +11,8 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class Message {
     private String id;
 
