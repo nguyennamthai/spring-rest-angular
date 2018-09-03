@@ -21,16 +21,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Flux<UserDto> getAll() {
-        return null;
+        return userRepository.findAll().map(userMapper::mapToDto);
     }
 
     @Override
-    public Mono<Void> save(Mono<UserDto> userDto) {
-        return null;
+    public Mono<UserDto> save(Mono<UserDto> userDto) {
+        return userRepository.saveAll(userDto.map(userMapper::mapToEntity)).single().map(userMapper::mapToDto);
     }
 
     @Override
-    public Mono<UserDto> getByEmail(Mono<String> email) {
-        return null;
+    public Mono<UserDto> getByEmail(String email) {
+        return userRepository.findByEmail(email).map(userMapper::mapToDto);
     }
 }
