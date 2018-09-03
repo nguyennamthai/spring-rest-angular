@@ -36,12 +36,12 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public Mono<MessageDto> getById(Mono<String> id) {
+    public Mono<MessageDto> getById(String id) {
         return messageRepository.findById(id).map(messageMapper::mapToDto);
     }
 
     @Override
-    public Flux<MessageDto> getByUserId(Mono<String> userId) {
+    public Flux<MessageDto> getByUserId(String userId) {
         return messageRepository.findAllByUserId(userId).map(messageMapper::mapToDto);
     }
 
@@ -51,7 +51,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public Mono<Void> deleteById(Mono<String> id) {
+    public Mono<Void> deleteById(String id) {
         return messageRepository.deleteById(id);
     }
 }

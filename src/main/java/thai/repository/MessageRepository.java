@@ -9,7 +9,7 @@ import thai.domain.Message;
 public interface MessageRepository extends ReactiveSortingRepository<Message, String> {
     Mono<Message> findFirstByOrderByModifiedDesc();
 
-    Flux<Message> findAllByUserId(Mono<String> userId);
+    Flux<Message> findAllByUserId(String userId);
 
     Flux<Message> findAllByOrderByModifiedDesc(Pageable pageable);
 }

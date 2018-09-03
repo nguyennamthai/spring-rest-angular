@@ -9,11 +9,11 @@ public interface MessageService {
 
     Flux<MessageDto> getPage(int pageNumber, int pageSize);
 
-    Mono<MessageDto> getById(Mono<String> id);
+    Mono<MessageDto> getById(String id);
 
-    Flux<MessageDto> getByUserId(Mono<String> userId);
+    Flux<MessageDto> getByUserId(String userId);
 
     Mono<MessageDto> save(Mono<MessageDto> messageDto);
 
-    Mono<Void> deleteById(Mono<String> id);
+    Mono<Void> deleteById(String id);
 }

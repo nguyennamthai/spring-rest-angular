@@ -9,7 +9,9 @@ import thai.handler.HomeHandler;
 import thai.handler.MessageHandler;
 import thai.handler.UserHandler;
 
+import static org.springframework.web.reactive.function.server.RequestPredicates.DELETE;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
+import static org.springframework.web.reactive.function.server.RequestPredicates.PUT;
 import static org.springframework.web.reactive.function.server.RequestPredicates.path;
 import static org.springframework.web.reactive.function.server.RouterFunctions.nest;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
@@ -34,9 +36,15 @@ public class RoutingConfig {
 
     @Bean
     public RouterFunction<ServerResponse> routerFunction() {
-        RouterFunction<ServerResponse> userRoutes = route(GET("/"), request -> userHandler.getAllUsers());
+        RouterFunction<ServerResponse> userRoutes = route(GET("/"), request -> userHandler.getAllUsers())
+                .andRoute(PUT("/"), userHandler::saveUser);
 
-        RouterFunction<ServerResponse> messageRoutes = route(GET("/latest"), request -> messageHandler.getLatestMessage());
+        RouterFunction<ServerResponse> messageRoutes = route(GET("/latest"), request -> messageHandler.getLatestMessage())
+                .andRoute(GET("/"), messageHandler::getMessagePage)
+                .andRoute(GET("/{id}"), messageHandler::getMessageById)
+                .andRoute(GET("/user"), messageHandler::getMessageByUserId)
+                .andRoute(PUT("/"), messageHandler::saveMessage)
+                .andRoute(DELETE("/{id}"), messageHandler::deleteMessageById);
 
         RouterFunction<ServerResponse> apiRoutes = route(GET("/"), request -> homeHandler.showHomePage())
                 .andNest(path("/users"), userRoutes)
