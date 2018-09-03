@@ -26,7 +26,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public Mono<MessageDto> getLatest() {
-        return messageRepository.findFirstOrderByModifiedDesc().map(messageMapper::mapToDto);
+        return messageRepository.findAll(Sort.by(Direction.DESC, SORT_PROPERTY)).map(messageMapper::mapToDto).next();
     }
 
     @Override
