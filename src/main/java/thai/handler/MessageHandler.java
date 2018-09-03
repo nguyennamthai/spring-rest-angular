@@ -17,7 +17,7 @@ public class MessageHandler {
         this.messageService = messageService;
     }
 
-    public Mono<ServerResponse> getLatest() {
+    public Mono<ServerResponse> getLatestMessage() {
         return ServerResponse.ok().body(messageService.getLatest(), MessageDto.class);
     }
 }

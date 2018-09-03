@@ -34,10 +34,13 @@ public class RoutingConfig {
 
     @Bean
     public RouterFunction<ServerResponse> routerFunction() {
-        RouterFunction<ServerResponse> messageRoutes = route(GET("/latest"), request -> messageHandler.getLatest());
+        RouterFunction<ServerResponse> userRoutes = route(GET("/"), request -> userHandler.getAllUsers());
+
+        RouterFunction<ServerResponse> messageRoutes = route(GET("/latest"), request -> messageHandler.getLatestMessage());
 
         RouterFunction<ServerResponse> apiRoutes = route(GET("/"), request -> homeHandler.showHomePage())
-                .andNest(GET("/messages"), messageRoutes);
+                .andNest(path("/users"), userRoutes)
+                .andNest(path("/messages"), messageRoutes);
 
         return nest(path("/api"), apiRoutes);
     }

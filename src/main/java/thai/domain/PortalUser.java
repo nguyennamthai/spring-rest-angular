@@ -7,8 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.Email;
-
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -18,11 +16,7 @@ public class PortalUser {
 
     @NonNull
     @Indexed(unique = true)
-    @Email(message = "Invalid email address")
-    private String email;
-
-    @NonNull
-    private String password;
+    private String username;
 
     @NonNull
     private Role role;

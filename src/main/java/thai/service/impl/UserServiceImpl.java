@@ -25,11 +25,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Mono<UserDto> getByEmail(Mono<String> email) {
-        return userRepository.findByEmail(email).map(userMapper::mapToDto);
-    }
-
-    @Override
     public Mono<UserDto> save(Mono<UserDto> userDto) {
         return userRepository.saveAll(userDto.map(userMapper::mapToEntity)).single().map(userMapper::mapToDto);
     }
