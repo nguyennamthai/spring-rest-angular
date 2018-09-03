@@ -1,7 +1,20 @@
 package thai.service;
 
-import org.springframework.stereotype.Service;
+import thai.domain.PortalUser;
+import thai.service.dto.MessageDto;
 
-@Service
-public class MessageService {
+import java.util.List;
+
+public interface MessageService {
+    void save(MessageDto messageDto);
+
+    void delete(String id);
+
+    MessageDto getLatest();
+
+    MessageDto getById(String id);
+
+    List<MessageDto> getByPageNumber(int pageNumber);
+
+    List<MessageDto> getByUser(PortalUser user);
 }

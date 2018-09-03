@@ -1,7 +1,13 @@
 package thai.service;
 
-import org.springframework.stereotype.Service;
+import thai.service.dto.UserDto;
 
-@Service
-public class UserService {
+import java.util.List;
+
+public interface UserService {
+    void save(UserDto userDto);
+
+    List<UserDto> getAll();
+
+    UserDto getByEmail(String email);
 }
