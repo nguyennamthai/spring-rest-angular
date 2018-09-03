@@ -1,20 +1,20 @@
 package thai.service;
 
-import thai.domain.PortalUser;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import thai.service.dto.MessageDto;
-
-import java.util.List;
+import thai.service.dto.UserDto;
 
 public interface MessageService {
-    void save(MessageDto messageDto);
+    Mono<MessageDto> getLatest();
 
-    void delete(String id);
+    Mono<MessageDto> save(Mono<MessageDto> messageDto);
 
-    MessageDto getLatest();
+    Mono<Void> deleteById(Mono<String> id);
 
-    MessageDto getById(String id);
+    Mono<MessageDto> getById(Mono<String> id);
 
-    List<MessageDto> getByPageNumber(int pageNumber);
+    Flux<MessageDto> getByPageNumber(Mono<Integer> pageNumber);
 
-    List<MessageDto> getByUser(PortalUser user);
+    Flux<MessageDto> getByUser(Mono<UserDto> userDto);
 }

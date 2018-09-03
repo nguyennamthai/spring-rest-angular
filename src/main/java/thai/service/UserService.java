@@ -1,13 +1,13 @@
 package thai.service;
 
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import thai.service.dto.UserDto;
 
-import java.util.List;
-
 public interface UserService {
-    void save(UserDto userDto);
+    Flux<UserDto> getAll();
 
-    List<UserDto> getAll();
+    Mono<Void> save(Mono<UserDto> userDto);
 
-    UserDto getByEmail(String email);
+    Mono<UserDto> getByEmail(Mono<String> email);
 }

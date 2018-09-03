@@ -1,41 +1,52 @@
 package thai.service.impl;
 
+import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
-import thai.domain.PortalUser;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import thai.repository.MessageRepository;
 import thai.service.MessageService;
 import thai.service.dto.MessageDto;
-
-import java.util.List;
+import thai.service.dto.UserDto;
+import thai.service.mapper.MessageMapper;
 
 @Service
 public class MessageServiceImpl implements MessageService {
-    @Override
-    public void save(MessageDto messageDto) {
+    private final MessageMapper messageMapper;
+    private final MessageRepository messageRepository;
 
+    public MessageServiceImpl(MessageRepository messageRepository) {
+        this.messageMapper = Mappers.getMapper(MessageMapper.class);
+        this.messageRepository = messageRepository;
     }
 
     @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public MessageDto getLatest() {
+    public Mono<MessageDto> getLatest() {
         return null;
     }
 
     @Override
-    public MessageDto getById(String id) {
+    public Mono<MessageDto> save(Mono<MessageDto> messageDto) {
         return null;
     }
 
     @Override
-    public List<MessageDto> getByPageNumber(int pageNumber) {
+    public Mono<Void> deleteById(Mono<String> id) {
         return null;
     }
 
     @Override
-    public List<MessageDto> getByUser(PortalUser user) {
+    public Mono<MessageDto> getById(Mono<String> id) {
+        return null;
+    }
+
+    @Override
+    public Flux<MessageDto> getByPageNumber(Mono<Integer> pageNumber) {
+        return null;
+    }
+
+    @Override
+    public Flux<MessageDto> getByUser(Mono<UserDto> userDto) {
         return null;
     }
 }
