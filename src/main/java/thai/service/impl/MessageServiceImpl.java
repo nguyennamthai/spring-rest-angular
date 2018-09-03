@@ -1,6 +1,8 @@
 package thai.service.impl;
 
 import org.mapstruct.factory.Mappers;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -12,6 +14,8 @@ import thai.service.mapper.MessageMapper;
 
 @Service
 public class MessageServiceImpl implements MessageService {
+    private static final String SORT_PROPERTY = "modified";
+
     private final MessageMapper messageMapper;
     private final MessageRepository messageRepository;
 
@@ -22,31 +26,33 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public Mono<MessageDto> getLatest() {
-        return null;
+        return messageRepository.findFirstOrderByModifiedDesc().map(messageMapper::mapToDto);
+    }
+
+    @Override
+    public Flux<MessageDto> getAll(String direction) {
+        return messageRepository.findAll(Sort.by(Direction.valueOf(direction.toUpperCase()), SORT_PROPERTY))
+                .map(messageMapper::mapToDto);
     }
 
     @Override
     public Mono<MessageDto> save(Mono<MessageDto> messageDto) {
-        return null;
+        return messageRepository.saveAll(messageDto.map(messageMapper::mapToEntity)).single().map(messageMapper::mapToDto);
     }
 
     @Override
     public Mono<Void> deleteById(Mono<String> id) {
-        return null;
+        return messageRepository.deleteById(id);
     }
 
     @Override
     public Mono<MessageDto> getById(Mono<String> id) {
-        return null;
+        return messageRepository.findById(id).map(messageMapper::mapToDto);
     }
 
     @Override
-    public Flux<MessageDto> getByPageNumber(Mono<Integer> pageNumber) {
-        return null;
-    }
-
-    @Override
-    public Flux<MessageDto> getByUser(Mono<UserDto> userDto) {
-        return null;
+    public Flux<MessageDto> getByUser(UserDto userDto, String direction) {
+        return messageRepository.findAllByUserId(userDto.getId(), Sort.by(Direction.valueOf(direction.toUpperCase()), SORT_PROPERTY))
+                .map(messageMapper::mapToDto);
     }
 }
