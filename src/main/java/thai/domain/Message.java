@@ -23,6 +23,7 @@ public class Message {
     @Size(min = 5, max = 255, message = "Enter between {min} and {max} characters")
     private String content;
 
+    @Indexed
     @LastModifiedDate
     private Date modified;
 }
