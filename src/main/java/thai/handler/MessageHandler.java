@@ -36,7 +36,10 @@ public class MessageHandler {
 
     public Mono<ServerResponse> getMessageByUserId(ServerRequest serverRequest) {
         Optional<String> userId = serverRequest.queryParam("id");
-        return ServerResponse.ok().body(messageService.getByUserId(userId.orElse("")), MessageDto.class);
+        if (userId.isPresent()) {
+            return ServerResponse.ok().body(messageService.getByUserId(userId.get()), MessageDto.class);
+        }
+        return ServerResponse.badRequest().body(Mono.just("The user id was missing"), String.class);
     }
 
     public Mono<ServerResponse> saveMessage(ServerRequest serverRequest) {
