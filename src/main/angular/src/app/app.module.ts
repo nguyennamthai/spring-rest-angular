@@ -17,6 +17,7 @@ import {UserDetailComponent} from './user/user-detail/user-detail.component';
 import {UserListComponent} from './user/user-list/user-list.component';
 import {UserEditComponent} from './user/user-edit/user-edit.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     AppRoutingModule,
     MaterialModule,
     FlexLayoutModule
