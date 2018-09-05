@@ -13,6 +13,9 @@ import {MessageEditComponent} from './message/message-edit/message-edit.componen
 import {MessageListComponent} from './message/message-list/message-list.component';
 import {MessageDetailComponent} from './message/message-detail/message-detail.component';
 import {HeaderComponent} from './header/header.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
+import { UserListComponent } from './user/user-list/user-list.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import {HeaderComponent} from './header/header.component';
     MessageEditComponent,
     MessageListComponent,
     MessageDetailComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserDetailComponent,
+    UserListComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
