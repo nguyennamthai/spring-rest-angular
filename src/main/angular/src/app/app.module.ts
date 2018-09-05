@@ -3,30 +3,34 @@ import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppComponent} from './app.component';
-import {MaterialModule} from "./material.module";
-import { SignupComponent } from './auth/signup/signup.component';
-import { LoginComponent } from './auth/login/login.component';
-import { MessageComponent } from './message/message.component';
-import { AddMessageComponent } from './message/add-message/add-message.component';
-import { EditMessageComponent } from './message/edit-message/edit-message.component';
-import { HomeComponent } from './home/home.component';
 import {AppRoutingModule} from './app-routing.module';
+import {MaterialModule} from "./material.module";
+import {SignupComponent} from './auth/signup/signup.component';
+import {LoginComponent} from './auth/login/login.component';
+import {HomeComponent} from './home/home.component';
+import {MessageAddComponent} from './message/message-add/message-add.component';
+import {MessageEditComponent} from './message/message-edit/message-edit.component';
+import {MessageListComponent} from './message/message-list/message-list.component';
+import {MessageDetailComponent} from './message/message-detail/message-detail.component';
+import {HeaderComponent} from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     LoginComponent,
-    MessageComponent,
-    AddMessageComponent,
-    EditMessageComponent,
-    HomeComponent
+    HomeComponent,
+    MessageAddComponent,
+    MessageEditComponent,
+    MessageListComponent,
+    MessageDetailComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
