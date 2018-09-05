@@ -13,9 +13,10 @@ import {MessageEditComponent} from './message/message-edit/message-edit.componen
 import {MessageListComponent} from './message/message-list/message-list.component';
 import {MessageDetailComponent} from './message/message-detail/message-detail.component';
 import {HeaderComponent} from './header/header.component';
-import { UserDetailComponent } from './user/user-detail/user-detail.component';
-import { UserListComponent } from './user/user-list/user-list.component';
-import { UserEditComponent } from './user/user-edit/user-edit.component';
+import {UserDetailComponent} from './user/user-detail/user-detail.component';
+import {UserListComponent} from './user/user-list/user-list.component';
+import {UserEditComponent} from './user/user-edit/user-edit.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
