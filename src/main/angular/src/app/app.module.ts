@@ -12,12 +12,13 @@ import {MessageAddComponent} from './message/message-add/message-add.component';
 import {MessageEditComponent} from './message/message-edit/message-edit.component';
 import {MessageListComponent} from './message/message-list/message-list.component';
 import {MessageDetailComponent} from './message/message-detail/message-detail.component';
-import {HeaderComponent} from './header/header.component';
+import {HeaderComponent} from './navigation/header/header.component';
 import {UserDetailComponent} from './user/user-detail/user-detail.component';
 import {UserListComponent} from './user/user-list/user-list.component';
 import {UserEditComponent} from './user/user-edit/user-edit.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {FormsModule} from '@angular/forms';
     HeaderComponent,
     UserDetailComponent,
     UserListComponent,
-    UserEditComponent
+    UserEditComponent,
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
